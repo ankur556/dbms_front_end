@@ -1,0 +1,241 @@
+/* Basic Reset and Body Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Container */
+.app-main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9; /* slate-100 */
+  padding: 1rem;
+  transition: background-color 500ms ease;
+  position: relative; /* For blob positioning */
+  overflow: hidden; /* Hide blob overflow */
+}
+
+.dark .app-main {
+  background-color: #0f172a; /* slate-900 */
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  color: #64748b; /* slate-500 */
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  transition: all 300ms ease;
+}
+.dark-mode-toggle:hover {
+  background-color: #ffffff;
+}
+.dark .dark-mode-toggle {
+  color: #94a3b8; /* slate-400 */
+  background-color: rgba(15, 23, 42, 0.5); /* slate-800/50 */
+}
+.dark .dark-mode-toggle:hover {
+  background-color: #1e293b; /* slate-700 */
+}
+
+.dark-mode-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+/* Content Layout */
+.content-container {
+  width: 100%;
+  max-width: 56rem; /* max-w-4xl */
+  text-align: center;
+  z-index: 10;
+}
+
+.main-heading {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 800;
+  color: #1e293b; /* slate-800 */
+  margin-bottom: 0.75rem;
+}
+.dark .main-heading {
+  color: #ffffff;
+}
+
+.sub-heading {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #475569; /* slate-600 */
+  margin-bottom: 3rem;
+}
+.dark .sub-heading {
+  color: #94a3b8; /* slate-400 */
+}
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* Media query for medium screens and up */
+@media (min-width: 768px) {
+  .main-heading {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .roles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Role Card Styling */
+.role-card {
+  cursor: pointer;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid #e2e8f0; /* slate-200 */
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  transition: all 300ms ease-in-out;
+}
+.dark .role-card {
+  border-color: #334155; /* slate-700 */
+  background-color: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+}
+
+.role-card:hover {
+  border-color: #818cf8; /* indigo-400 */
+}
+.dark .role-card:hover {
+  border-color: #6366f1; /* indigo-500 */
+}
+
+.role-card.selected {
+  border-color: #6366f1; /* indigo-500 */
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-container {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 9999px;
+  background-color: #e0e7ff; /* indigo-100 */
+  transition: background-color 300ms ease;
+}
+.dark .icon-container {
+  background-color: #334155; /* slate-700 */
+}
+.role-card.selected .icon-container {
+  background-color: #6366f1; /* indigo-500 */
+}
+
+.card-icon {
+  height: 2rem;
+  width: 2rem;
+  color: #6366f1; /* indigo-500 */
+  transition: color 300ms ease;
+}
+.dark .card-icon {
+    color: #818cf8; /* indigo-400 */
+}
+.role-card.selected .card-icon {
+  color: #ffffff;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: #1e293b; /* slate-800 */
+  margin-bottom: 0.5rem;
+  transition: color 300ms ease;
+}
+.dark .card-title {
+  color: #ffffff;
+}
+
+.card-description {
+  color: #64748b; /* slate-500 */
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: color 300ms ease;
+}
+.dark .card-description {
+  color: #94a3b8; /* slate-400 */
+}
+
+/* Decorative Blobs */
+.blob {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 9999px;
+    mix-blend-mode: multiply;
+    filter: blur(24px);
+    opacity: 0.5;
+    z-index: 0;
+}
+.dark .blob {
+    opacity: 0.3;
+}
+.blob-one {
+    top: -50px;
+    left: -50px;
+    background-color: #c7d2fe; /* indigo-200 */
+}
+.blob-two {
+    bottom: -50px;
+    right: -50px;
+    background-color: #e9d5ff; /* purple-200 */
+}
+
+
+/* Animation Keyframes and Classes (from original file) */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4000ms;
+}
+
